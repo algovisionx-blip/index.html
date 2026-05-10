@@ -6,6 +6,44 @@
 <title>AlgoVision X — Invite-Only TradingView Strategy</title>
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+/* ── Razorpay button wrapper ── */
+.rzp-wrap {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+  flex-shrink: 0;
+  min-height: 48px;
+}
+.rzp-wrap form {
+  width: 100%;
+}
+.rzp-wrap form > * {
+  width: 100% !important;
+}
+/* Fallback button — shown only when Razorpay script fails (local) */
+.rzp-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(90deg,#1E8FFF,#00D4FF);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  margin-top: 0.5rem;
+}
+.rzp-fallback:hover { opacity: 0.88; }
+</style>
+<style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#05081A;
@@ -314,12 +352,14 @@ nav{
 .testi-loc{color:var(--muted);font-size:0.72rem}
 
 /* PRICING */
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;align-items:stretch}
 .price-card{
   background:var(--navy3);border:1px solid var(--border2);
   border-radius:18px;padding:2rem 1.5rem;
   position:relative;transition:all 0.2s;
+  display:flex;flex-direction:column;
 }
+.price-feats{flex:1;margin-bottom:0.5rem}
 .price-card:hover{transform:translateY(-3px)}
 .price-card.featured{border-color:var(--blue-bright);background:rgba(30,143,255,0.05)}
 .price-card.featured::before{
@@ -428,23 +468,6 @@ footer p{color:var(--muted);font-size:0.75rem}
 .divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
 
 /* Razorpay subscription button — match Pay Now size */
-#starter-rzp-wrap {
-  width: 100%;
-  margin-top: 0.3rem;
-}
-#starter-rzp-wrap form {
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-#starter-rzp-wrap iframe {
-  width: 100% !important;
-  min-width: unset !important;
-  max-width: 100% !important;
-  height: 44px !important;
-  border-radius: 10px !important;
-  display: block !important;
-}
 
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
@@ -2714,7 +2737,7 @@ a:has(.result-card-photo) {
   </div>
 
   <!-- PRICE CARDS -->
-  <div class="price-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+  <div class="price-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;align-items:stretch">
 
     <!-- 1 Month -->
     <div class="price-card">
@@ -2727,14 +2750,13 @@ a:has(.result-card-photo) {
       <ul class="price-feats">
         <li>✅ TradingView Script Access</li>
         <li>✅ Buy/Sell Signal Alerts</li>
-        <li>✅ Basic Strategy Dashboard</li>
         <li>✅ Email Support</li>
-        <li>❌ Automation Support</li>
         <li>❌ Priority Support</li>
-        <li>❌ Custom Settings Help</li>
+        <li>❌ Automation Support</li>
       </ul>
-      <div style="width:100%;text-align:center;margin-top:0.6rem">
-        <form><script src="https://cdn.razorpay.com/static/widget/subscription-button.js" data-subscription_button_id="pl_SnY7XnLZFmRU5k" data-button_theme="brand-color" async></script></form>
+      <div class="rzp-wrap">
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SnZd39NSFJGFBq" async></script></form>
+        <a href="https://rzp.io/rzp/pl_SnZd39NSFJGFBq" target="_blank" class="rzp-btn rzp-fallback">⚡ Pay Now</a>
       </div>
     </div>
 
@@ -2745,23 +2767,21 @@ a:has(.result-card-photo) {
       <div class="price-tagline" style="color:#5A6A99;font-size:1rem;margin-bottom:0.6rem">3 Months Access</div>
       <div class="price-orig">₹7,141</div>
       <div class="price-amt" style="color:#00E5A0">₹4,999</div>
-      <div class="price-period">One-time · 3 months access</div>
+      <div class="price-period">One-time · 3 months</div>
       <ul class="price-feats">
         <li>✅ TradingView Script Access</li>
         <li>✅ Buy/Sell Signal Alerts</li>
-        <li>✅ Advanced Strategy Dashboard</li>
-        <li>✅ Multi-Timeframe Signals</li>
         <li>✅ 24/7 Customer Support</li>
         <li>✅ Setup Guidance</li>
         <li>❌ Automation Support</li>
-        <li>❌ Custom Settings Help</li>
       </ul>
-      <div style="width:100%;text-align:center;margin-top:0.6rem">
-        <form><script src="https://cdn.razorpay.com/static/widget/subscription-button.js" data-subscription_button_id="pl_SnYQ4HBTqo3pNb" data-button_theme="brand-color" async></script></form>
+      <div class="rzp-wrap">
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SnZfJaLmFwySVk" async></script></form>
+        <a href="https://rzp.io/rzp/pl_SnZfJaLmFwySVk" target="_blank" class="rzp-btn rzp-fallback">⚡ Pay Now</a>
       </div>
     </div>
 
-    <!-- 6 Months — Best Value -->
+    <!-- 6 Months -->
     <div class="price-card featured">
       <div class="price-badge">⭐ Best Value</div>
       <div style="display:inline-block;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:#00D4FF;font-family:'Exo 2',sans-serif;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:0.8rem;letter-spacing:0.05em">50% OFF</div>
@@ -2769,41 +2789,38 @@ a:has(.result-card-photo) {
       <div class="price-tagline" style="color:#5A6A99;font-size:1rem;margin-bottom:0.6rem">6 Months Access</div>
       <div class="price-orig">₹19,998</div>
       <div class="price-amt" style="color:#00D4FF">₹9,999</div>
-      <div class="price-period">One-time · 6 months access</div>
+      <div class="price-period">One-time · 6 months</div>
       <ul class="price-feats">
         <li>✅ TradingView Script Access</li>
         <li>✅ Buy/Sell Signal Alerts</li>
-        <li>✅ Advanced Strategy Dashboard</li>
-        <li>✅ Multi-Timeframe Signals</li>
         <li>✅ 24/7 Priority Support</li>
         <li>✅ Custom Settings Help</li>
-        <li>✅ Broker Automation Setup Guide</li>
-        <li>✅ Auto-Trade via Webhook Support</li>
+        <li>✅ Webhook Support</li>
       </ul>
-      <div style="width:100%;text-align:center;margin-top:0.6rem">
-        <form><script src="https://cdn.razorpay.com/static/widget/subscription-button.js" data-subscription_button_id="pl_SnYfL6uFp9gSYS" data-button_theme="brand-color" async></script></form>
+      <div class="rzp-wrap">
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SnZh9KAsSnOM74" async></script></form>
+        <a href="https://rzp.io/rzp/pl_SnZh9KAsSnOM74" target="_blank" class="rzp-btn rzp-fallback">⚡ Pay Now</a>
       </div>
+    </div>
+
+    <!-- 1 Year -->
     <div class="price-card">
       <div style="display:inline-block;background:rgba(255,184,0,0.1);border:1px solid rgba(255,184,0,0.3);color:#FFB800;font-family:'Exo 2',sans-serif;font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:0.8rem;letter-spacing:0.05em">70% OFF</div>
       <div class="price-name">🔥 Pro Trader</div>
       <div class="price-tagline" style="color:#5A6A99;font-size:1rem;margin-bottom:0.6rem">1 Year Access</div>
       <div class="price-orig">₹49,996</div>
       <div class="price-amt" style="color:#FFB800">₹14,999</div>
-      <div class="price-period">One-time · Full year access</div>
+      <div class="price-period">One-time · Full year</div>
       <ul class="price-feats">
         <li>✅ TradingView Script Access</li>
         <li>✅ Buy/Sell Signal Alerts</li>
-        <li>✅ Advanced Strategy Dashboard</li>
-        <li>✅ Multi-Timeframe Signals</li>
         <li>✅ 24/7 Priority Support</li>
-        <li>✅ Custom Settings Help</li>
-        <li>✅ Full Automation Setup (Webhook)</li>
-        <li>✅ Broker Integration Support</li>
-        <li>✅ Auto-Trade on NSE/BSE/Crypto</li>
-        <li>✅ Quarterly Strategy Updates</li>
+        <li>✅ Full Automation Setup</li>
+        <li>✅ Quarterly Updates</li>
       </ul>
-      <div style="width:100%;text-align:center;margin-top:0.6rem">
-        <form><script src="https://cdn.razorpay.com/static/widget/subscription-button.js" data-subscription_button_id="pl_SnYhJQXz3kr7tQ" data-button_theme="brand-color" async></script></form>
+      <div class="rzp-wrap">
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SnZj2pehqo84Vt" async></script></form>
+        <a href="https://rzp.io/rzp/pl_SnZj2pehqo84Vt" target="_blank" class="rzp-btn rzp-fallback">⚡ Pay Now</a>
       </div>
     </div>
 
@@ -2819,19 +2836,13 @@ a:has(.result-card-photo) {
       <ul class="price-feats">
         <li>✅ TradingView Script Access</li>
         <li>✅ Buy/Sell Signal Alerts</li>
-        <li>✅ Advanced Strategy Dashboard</li>
-        <li>✅ Multi-Timeframe Signals</li>
-        <li>✅ 24/7 VIP Priority Support</li>
-        <li>✅ Custom Settings Help</li>
-        <li>✅ Full Automation Setup (Webhook)</li>
-        <li>✅ Broker Integration Support</li>
-        <li>✅ Auto-Trade on NSE/BSE/Crypto</li>
-        <li>✅ All Future Strategy Updates FREE</li>
+        <li>✅ 24/7 VIP Support</li>
+        <li>✅ Full Automation + Broker Setup</li>
         <li>✅ 1-on-1 Onboarding Call</li>
-        <li>✅ Lifetime Access — Pay Once, Use Forever</li>
       </ul>
-      <div style="width:100%;text-align:center;margin-top:0.6rem">
+      <div class="rzp-wrap">
         <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SnYkBBOC7UvdPr" async></script></form>
+        <a href="https://rzp.io/rzp/pl_SnYkBBOC7UvdPr" target="_blank" class="rzp-btn rzp-fallback">⚡ Buy Now</a>
       </div>
     </div>
 
@@ -2839,24 +2850,28 @@ a:has(.result-card-photo) {
 </div>
 
 <script>
-// Countdown timer — 7 days, auto-restarts when it hits 0
+// Countdown timer — fixed end date, never resets on page open/close
 (function(){
-  var KEY = 'av_offer_end';
-  var WEEK = 7 * 24 * 60 * 60 * 1000;
+  var KEY = 'av_offer_end_v2';
+  var DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
+
   function getEnd(){
     var stored = localStorage.getItem(KEY);
-    var end = stored ? parseInt(stored) : 0;
-    if(!end || Date.now() > end){
-      end = Date.now() + WEEK;
+    if(stored){
+      return parseInt(stored); // always return the same saved end time
+    } else {
+      var end = Date.now() + DURATION;
       localStorage.setItem(KEY, end);
+      return end;
     }
-    return end;
   }
+
   function pad(n){ return String(n).padStart(2,'0'); }
+
   function tick(){
     var end = getEnd();
     var diff = end - Date.now();
-    if(diff <= 0){ localStorage.removeItem(KEY); diff = 0; }
+    if(diff < 0) diff = 0;
     var d = Math.floor(diff / 86400000);
     var h = Math.floor((diff % 86400000) / 3600000);
     var m = Math.floor((diff % 3600000) / 60000);
@@ -2866,6 +2881,7 @@ a:has(.result-card-photo) {
     document.getElementById('cd-mins').textContent = pad(m);
     document.getElementById('cd-secs').textContent = pad(s);
   }
+
   tick();
   setInterval(tick, 1000);
 })();
@@ -2875,19 +2891,34 @@ a:has(.result-card-photo) {
 <div class="apply-wrap" id="apply">
   <span class="sec-tag" style="display:block;margin-bottom:0.7rem">Limited Spots Available</span>
   <h2>Ready for <span style="background:linear-gradient(90deg,var(--blue-bright),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Invite Access?</span></h2>
-  <p>Click below to complete your payment and get instant access to NovaPulse™ invite-only indicator on TradingView. Access granted within 24 hours after payment.</p>
-  <div style="margin:2rem auto;text-align:center">
-    <a href="#pricing" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;" style="display:inline-block;background:linear-gradient(90deg,#1E8FFF,#00D4FF);color:#fff;padding:1rem 2.8rem;border-radius:12px;font-family:'Exo 2',sans-serif;font-weight:800;font-size:1.05rem;text-decoration:none;box-shadow:0 0 32px rgba(30,143,255,0.45);letter-spacing:0.02em;transition:all 0.2s">⚡ Pay &amp; Get Access Now →</a>
-    <p style="color:#5A6A99;font-size:0.78rem;margin-top:1rem">🔒 Secure payment via Cashfree · Access within 24 hrs after payment</p>
+  <p>Click below to complete your payment and get instant access to NovaPulse™ invite-only indicator on TradingView.</p>
+
+  <!-- Post-payment message box -->
+  <div style="max-width:520px;margin:2rem auto 0;background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.25);border-radius:14px;padding:1.4rem 1.6rem;text-align:left">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.8rem">
+      <span style="font-size:1.3rem">✅</span>
+      <span style="font-family:'Exo 2',sans-serif;font-weight:800;font-size:1rem;color:#00E5A0">Payment ke baad kya hoga?</span>
+    </div>
+    <p style="color:#C0D0F0;font-size:0.88rem;line-height:1.75;margin:0">
+      Payment complete hone ke <strong style="color:#fff">15 minute ke andar</strong> aapko TradingView access de diya jayega. Baki koi bhi problem nahi hogi — lekin agar koi problem aaye to hume turant contact karein:
+    </p>
+    <a href="mailto:algovisionx2@gmail.com" style="display:inline-flex;align-items:center;gap:6px;margin-top:0.9rem;color:#00D4FF;font-family:'Exo 2',sans-serif;font-weight:700;font-size:0.85rem;text-decoration:none">
+      📧 algovisionx2@gmail.com
+    </a>
   </div>
-  <p class="spots">Only <strong>7 spots left</strong> this month · After payment email <strong style="color:var(--cyan)">algovisionx@gmail.com</strong> with your TradingView username</p>
+
+  <div style="margin:1.8rem auto;text-align:center">
+    <a href="#pricing" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'});return false;" style="display:inline-block;background:linear-gradient(90deg,#1E8FFF,#00D4FF);color:#fff;padding:1rem 2.8rem;border-radius:12px;font-family:'Exo 2',sans-serif;font-weight:800;font-size:1.05rem;text-decoration:none;box-shadow:0 0 32px rgba(30,143,255,0.45);letter-spacing:0.02em;transition:all 0.2s">⚡ Pay &amp; Get Access Now →</a>
+    <p style="color:#5A6A99;font-size:0.78rem;margin-top:1rem">🔒 Secure payment via Razorpay · Access within 15 minutes</p>
+  </div>
+  <p class="spots">Only <strong>7 spots left</strong> this month · After payment email <strong style="color:var(--cyan)">algovisionx2@gmail.com</strong> with your TradingView username</p>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">AlgoVision<span class="x"> X</span></div>
   <p>© 2025 AlgoVision X. All rights reserved. Trading involves significant risk of loss.</p>
-  <p style="margin-top:0.5rem">📧 Kisi bhi problem ke liye contact karein: <a href="mailto:algovisionx@gmail.com" style="color:#00E5A0;text-decoration:none">algovisionx@gmail.com</a></p>
+  <p style="margin-top:0.5rem">📧 Kisi bhi problem ke liye contact karein: <a href="mailto:algovisionx2@gmail.com" style="color:#00E5A0;text-decoration:none">algovisionx2@gmail.com</a></p>
   <div class="footer-links" style="margin-top:0.8rem">
     <a href="#">TradingView</a>
     <a href="#">Telegram</a>
